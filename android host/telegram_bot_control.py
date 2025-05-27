@@ -10,7 +10,7 @@ from wakeonlan import send_magic_packet
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pytube import YouTube
 
-TOKEN = '7482583188:AAFj3GdfbPG1LGrnX0lVX-CBIcbAK1R8mA4'
+TOKEN = '7482583188:AAHTeesXXscQQZpsrpw86RJ04Z3SCy2UZBE'
 ADMIN_ID = '1447911438'
 GROUP_ID = '-1002571744053'
 
