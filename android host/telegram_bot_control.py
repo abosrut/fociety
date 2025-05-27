@@ -126,6 +126,9 @@ def get_sysinfo():
 
 def take_webcam_screenshot():
     try:
+        if not os.path.exists('/data/data/com.termux/files/usr/bin/termux-camera-photo'):
+            bot.send_message(GROUP_ID, "📷 Ошибка: termux-camera-photo не установлен. Установите termux-api.")
+            return
         subprocess.run(['termux-camera-photo', '-c', '0', '/sdcard/webcam.jpg'], check=True)
         if os.path.isfile('/sdcard/webcam.jpg') and os.path.getsize('/sdcard/webcam.jpg') > 0:
             bot.send_photo(GROUP_ID, open('/sdcard/webcam.jpg', 'rb'), caption="📷 Снимок с камеры")
@@ -136,12 +139,12 @@ def take_webcam_screenshot():
         bot.send_message(GROUP_ID, f"📷 Ошибка при использовании камеры: {e}")
 
 def shutdown_device():
-    bot.send_message(GROUP_ID, "⏻ Выключение недоступно на Android без root")
+    bot.send_message(GROUP_ID, "⏻ Выключение недоступно на Android без root.")
 
 def wake_on_lan():
     mac_address = '5A:57:F7:C7:D7:0A'
     send_magic_packet(mac_address)
-    bot.send_message(GROUP_ID, "🔌 Отправлен сигнал Wake-on-LAN")
+    bot.send_message(GROUP_ID, "🔌 Отправлен сигнал Wake-on-LAN.")
 
 def execute_cmd(command):
     try:
@@ -166,12 +169,12 @@ def set_wallpaper_from_url(url):
         bot.send_message(GROUP_ID, f"🖼️ Ошибка при установке обоев: {e}")
 
 def set_wallpaper_from_file(file_path):
-        try:
-            subprocess.run(['termux-wallpaper', '-f', file_path], check=True)
-            bot.send_message(GROUP_ID, "🖼️ Обои установлены!")
-            os.remove(file_path)
-        except Exception as e:
-            bot.send_message(GROUP_ID, f"🖼️ Ошибка при установке файла: {e}")
+    try:
+        subprocess.run(['termux-wallpaper', '-f', file_path], check=True)
+        bot.send_message(GROUP_ID, "🖼️ Обои установлены!")
+        os.remove(file_path)
+    except Exception as e:
+        bot.send_message(GROUP_ID, f"🖼️ Ошибка при установке файла: {e}")
 
 def open_url(url):
     try:
