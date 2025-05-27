@@ -1,1 +1,1 @@
-python telegram_bot_control.py
+web: python telegram_bot_control.py
