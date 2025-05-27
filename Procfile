@@ -1,1 +1,1 @@
-start: python telegram_bot_control.py
+python telegram_bot_control.py
